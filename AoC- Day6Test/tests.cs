@@ -18,7 +18,7 @@ namespace AoC__Day6Test
         public void Part2()
         {
             Assert.AreEqual(6, AoC.Day6.Part2(AoC.Day6.TestData()));
-        }
+        }  
     }
 
     [TestClass]
