@@ -18,7 +18,7 @@ namespace AoC__Day6Test
         public void Part2()
         {
             Assert.AreEqual(6, AoC.Day6.Part2(AoC.Day6.TestData()));
-        }  
+        }
     }
 
     [TestClass]
@@ -65,4 +65,65 @@ namespace AoC__Day6Test
             Assert.AreEqual(532, Missing);
         }
     }
+
+
+    [TestClass]
+    public class Day4
+    {
+        [TestMethod]
+        public void GetFourPassports()
+        {
+            List<string> TestData = AoC.Day4.TestData();
+            List<List<string>> Passports = AoC.Day4.GetPassportsFromText(TestData);
+
+            Assert.AreEqual(4, Passports.Count);
+            var Requirements = AoC.Day4.GetRequiredFields();
+            int GoodPassports = AoC.Day4.CountNaivelyGoodPassports(Passports, Requirements);
+            Assert.AreEqual(2, GoodPassports);
+        }
+
+        [TestMethod]
+        public void Part1()
+        {
+            List<string> TestData = AoC.Day4.RealData();
+            List<List<string>> Passports = AoC.Day4.GetPassportsFromText(TestData);
+            var Requirements = AoC.Day4.GetRequiredFields();
+            int GoodPassports = AoC.Day4.CountNaivelyGoodPassports(Passports, Requirements);
+            Assert.AreEqual(190, GoodPassports);
+        }
+
+
+        [TestMethod]
+        public void CredentialChecker()
+        {
+            Assert.AreEqual(true, AoC.Day4.ValidateCredential("hgt:165cm"));
+            Assert.AreEqual(false, AoC.Day4.ValidateCredential("hgt:195cm"));
+            Assert.AreEqual(false, AoC.Day4.ValidateCredential("hgt:145cm"));
+            Assert.AreEqual(true, AoC.Day4.ValidateCredential("hgt:70in"));
+            Assert.AreEqual(false, AoC.Day4.ValidateCredential("hgt:58in"));
+            Assert.AreEqual(false, AoC.Day4.ValidateCredential("hgt:77in"));
+        }
+
+        [TestMethod]
+        public void Part2()
+        {
+            List<string> TestData = AoC.Day4.RealData();
+            List<List<string>> Passports = AoC.Day4.GetPassportsFromText(TestData);
+            int count = 0;
+            foreach (List<string> Passport in Passports)
+            {
+                if (AoC.Day4.PassportValidator(Passport))
+                {
+                    count++;
+                }
+                else
+                {
+
+                }
+            }
+            Assert.AreEqual(121, count);
+        }
+
+    }
+
 }
