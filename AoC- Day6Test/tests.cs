@@ -5,6 +5,53 @@ using System.Linq;
 
 namespace AoC__Day6Test
 {
+
+
+    [TestClass]
+    public class Day22Test
+    {
+        [TestMethod]
+        public void testReadData()
+        {
+            Day22 day22 = new Day22();
+            day22.LoadData(Day22.TestData());
+            Assert.AreEqual(5, day22.Player1.Count);
+            Assert.AreEqual(5, day22.Player2.Count);
+        }
+
+        [TestMethod]
+        public void testScore()
+        {
+            Day22 day22 = new Day22();
+            day22.LoadData(Day22.TestData());
+            while (day22.Compare())
+            {
+
+            }
+            int score = day22.ScoreWinner();
+
+            Assert.AreEqual(306, score);
+        }
+
+        [TestMethod]
+        public void RealScore()
+        {
+            Day22 day22 = new Day22();
+            day22.LoadData(Day22.RealData());
+            while (day22.Compare())
+            {
+
+            }
+            int score = day22.ScoreWinner();
+
+            Assert.AreEqual(33400, score);
+        }
+
+
+    }
+
+
+
     [TestClass]
     public class tests
     {
